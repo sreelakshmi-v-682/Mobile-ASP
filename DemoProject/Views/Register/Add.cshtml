@@ -1,0 +1,40 @@
+﻿@model DemoProject.Models.Domain.Register
+<html>
+    <head>
+        <body style="background-color: #D9D9D6;">
+            <h1>Register Here</h1>
+<form method="post" action="Add" >
+  <div class="mb-3">
+    <label for="" class="form-label">Name</label>
+    <input type="text" class="form-control" asp-for="Name">
+    <span asp-validation-for="Name" class="text-danger"></span>
+   
+  </div>
+
+    <div class="mb-3">
+    <label for="" class="form-label">Email</label>
+    <input type="email" class="form-control" asp-for="Email">
+    <span asp-validation-for="Email" class="text-danger"></span>
+   
+  </div>
+  <div class="mb-3">
+    <label for="" class="form-label">Mobile</label>
+    @*<input type="text" asp-for="Mobile" />
+                <span asp-validation-for="Mobile" class="error"></span>*@
+    <input type="text" class="form-control" asp-for="Mobile">
+     <span asp-validation-for="Mobile" class="text-danger"></span>
+    
+   
+  </div>
+   <div class="mb-3">
+    <label for="" class="form-label">Password</label>
+    <input type="password" class="form-control" asp-for="Password">
+    <span asp-validation-for="Password" class="text-danger"></span>
+   
+  </div>
+  <button type="submit" class="btn btn-primary">Register</button>
+</form>
+
+        </body>
+    </head>
+</html>

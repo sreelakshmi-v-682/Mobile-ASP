@@ -1,0 +1,25 @@
+﻿@model IEnumerable<DemoProject.Models.Domain.Mobile>
+
+<div class="row mt-5" id="card-group">
+                
+                @if (Model != null)
+                {
+                    foreach (var records in Model)
+                    {
+                        <div class="col-sm-6 col-md-4" >
+                            <div class="card mb-5 card-hov  card-shadow">
+                                <div class="card-body"> 
+                                    @{string photoPath="~/images/" + (@records.Photopath ?? "noimage.jpg");}
+                                    <img src=@photoPath class="img-fluid mt-2" asp-append-version="true" />
+                                    <h4 class="mt-2 mb-2">@records.MobileName</h4>
+                                    <p class="mt-2">@records.Price</p>
+                                </div>
+                                <div class="card-footer text-center">
+                                    <a asp-action="Login" asp-controller="User" class = "link-text" >Learn for Free</a>                                    
+                                </div>
+                            </div>
+                         </div>
+                    }
+                }
+           
+        </div>

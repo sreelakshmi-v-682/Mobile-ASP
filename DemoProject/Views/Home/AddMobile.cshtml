@@ -1,0 +1,217 @@
+﻿@model DemoProject.Models.Domain.MobileCreate
+@{
+   
+}
+
+
+
+<form enctype="multipart/form-data" asp-controller="Home" asp-action="AddMobileon" class="mt-3" method="post">
+<div class="form-group row">
+	<label asp-for="MobileName" class="col-sm-2 col-form-label"></label>
+	<div class="col-sm-10">
+		<input asp-for="MobileName" class="form-control" placeholder="Name">
+		<span asp-validation-for="MobileName" class="text-danger"></span>
+
+	</div>
+</div>
+
+<div class="form-group row">
+	<label asp-for="Catogery" class="col-sm-2 col-form-label"></label>
+	<div class="col-sm-10">
+		<input asp-for="Catogery" class="form-control" placeholder="catogery">
+		<span asp-validation-for="Catogery" class="text-danger"></span>
+
+	</div>
+</div>
+
+
+<div class="form-group row">
+	<label asp-for="Price" class="col-sm-2 col-form-label"></label>
+	<div class="col-sm-10">
+		<input asp-for="Price" class="form-control" placeholder="price">
+		<span asp-validation-for="Price" class="text-danger"></span>
+
+	</div>
+</div>
+
+
+
+<div class="form-group row">
+	<label asp-for="Photo" class="col-sm-2 col-form-label"></label>
+	<div class="col-sm-10">
+		<div class="custom-file">
+		<input asp-for="Photo" class="form-control  custom-file-input">
+		<label class="custom-file-label">choose file..</label>
+		</div>
+	</div>
+</div>
+
+
+
+<div asp-validation-summary="All" class="text-danger"></div>
+<div class="form-group row">
+	<div class="col-sm-10">
+		<button type="submit" asp-controller="Home" asp-action="AddMobile">Add</button>
+	</div>
+	
+
+</div>
+
+
+@section Scripts{
+	<script type="text/javascript" src="~/lib/jquery/dist/jquery.js">
+		$(document).ready(function(){
+			$('.custom-file-input').on("change",function(){
+				var filename=$(this).val().split("\\").pop();
+				$(this).next('custom-file-label').html(filename);
+			});
+		});
+	</script>
+
+}
+</form>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--<script type="text/javascript" src="~/lib/jquery/dist/jquery.js"></script>
+<script src="~/javascript/AddMobile.js"></script>
+<div class="col-md-12">
+	<div class="row">
+		<div class="col-md-6">
+			<div class="row">
+				<div class="col-md-2">
+					<label>Name:</label>
+				</div>
+				<div class="col-md-10">
+					 <input id="txtName" type="text" placeholder="name" asp-for="MobileName" style="width:100%;">
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-2">
+					<label>Catogory:</label>
+
+				</div>
+				<div class="col-md-10">
+					<input id="txtCat" type="text" placeholder="catogory" asp-for="Catogery" style="width:100%;">
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-2">
+					<label>Price:</label>
+
+				</div>
+				<div class="col-md-10">
+					<input id="txtPrice" type="text" placeholder="price" asp-for="Price" style="width:100%;">
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-2">
+					<label>photo:</label>
+				</div>
+				
+			<div class="col-md-10">
+				<input id="txtFile" type="file"  asp-for="Photopath" value="Upload File" style="width:100%;">
+			</div>
+			</div>
+		</div>
+		<div class="col-md-6">
+			<img id="imgView" width="200" height="200" style="border:1px solid #000000;"
+		</div>
+</div>
+<div class="row">
+	<div class="col-md-12">
+		<button id="btnSave" class="btn btn-primary" style=width:100%;margin-top:10px;>save</button>
+		<button id="btnRead" class="btn btn-danger" style=width:100%;margin-top:10px;>Read</button>
+	</div>
+</div>
+</div>
+<script type="text/javascript">
+	$(document).ready(function(){
+
+	});
+	$("#txtFile").change(function(event){
+		var files= event.target.files;
+		$("imgView").attr("src",window.URL.createObjectURL(files[0]));
+	});
+	$("btnSave").click(function(){
+		var files=$("#txtFile").prop("files");
+		var formData=new FormData();
+		for(var i=0;i<files.Length;i++){
+			formData.append("file",files[i]);
+		}
+		var oMobile={
+			Name:$("txtName").val(),
+			Catogery:$("txtCat").val(),
+			Price:$("txtPrice").val(),
+
+		};
+		formData.append("mobile",JSON.stringify(oMobile));
+		$.ajax({
+			type:"POST",
+			url:"/Home/SaveFile",
+			data:formData,
+			processData:false,
+			contentType:false,
+			success:function(data){
+				ResetFields();
+				alert(data);
+			},
+			error:function(data){
+				console.log('Error:',data);
+			}
+
+		});
+	});
+	$("btnSave").click(function(){
+
+		$.ajax({
+			type:"GET",
+			url:"/Home/GetSavedMobile",
+			data:formData,
+			
+			success:function(data){
+				$("#txtName").val(data.Name);
+				$("#txtCat").val(data.Catogery);
+				$("#txtPrice").val(data.Price);
+				$("#imgView").attr("src","data:image/jpg;base64,"+ data.photo+"");
+			},
+			error:function(data){
+				console.log('Error:',data);
+			}
+
+		});
+
+
+	});
+	function RestFields(){
+		$("#txtName","#txtCat","#txtPrice").val("");
+		$("#imgView").attr("src","");
+	}
+
+</script>
+-->
+

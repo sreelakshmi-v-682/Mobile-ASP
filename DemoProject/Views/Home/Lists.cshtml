@@ -1,0 +1,63 @@
+﻿
+@model IEnumerable<DemoProject.Models.Domain.Mobile>
+
+@{
+    ViewBag.Title = "Index";
+     Layout = "~/Views/Shared/Layout2.cshtml"; 
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "AddMobile")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.MobileId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MobileName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Catogery)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Price)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Photopath)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.MobileId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MobileName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Catogery)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Price)
+        </td>
+        <td>
+                @{
+                    string photoPath = "~/images/" + @item.Photopath;
+                }
+                <img src=@photoPath asp-append-version="true" width="15px" height ="20px" />
+            </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.MobileId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.MobileId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.MobileId })
+        </td>
+    </tr>
+}
+
+</table>
+

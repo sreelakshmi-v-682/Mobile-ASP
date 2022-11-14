@@ -1,0 +1,66 @@
+﻿@model DemoProject.Models.Domain.Mobile
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+@if (ViewBag.Message != null)
+{
+    <div class="alert alert-success" role="alert">
+        @ViewBag.Message
+    </div>
+}
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>choco</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.MobileId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MobileId)
+        </dd>
+         <dt>
+            @Html.DisplayNameFor(model => model.MobileName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MobileName)
+        </dd>
+         <dt>
+            @Html.DisplayNameFor(model => model.Catogery)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Catogery)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Price)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Price)
+        </dd>
+         <dt>
+            @Html.DisplayNameFor(model => model.Photopath)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Photopath)
+        </dd>
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" asp-controller="Home" asp-action="Listseertvbyim ,oinubhyvgcfds2a1`" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Lists")
+        </div>
+    }
+</div>
+
